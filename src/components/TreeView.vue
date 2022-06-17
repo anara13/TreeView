@@ -20,10 +20,24 @@
 </template> 
 
 <script>
+import  axios  from 'axios'
+
   export default {
     props: {
         fichierJSON: [Object, Array, JSON]
     },
+
+    created() {
+        axios
+          .get('http://localhost:3000/items') 
+          .then(response => {
+            console.log(response.data) 
+          })
+          .catch(error => {
+            console.log('There was an error:', error.response)
+          })
+      },
+
     data: () => ({
     //permet de se souvenir du dernier fichier ouvert
       initiallyOpen: ['public'],
@@ -39,58 +53,6 @@
       },
       tree: [],
       //faire passer ici en props les éléments du fichier parent (SideBar) 
-      items: [
-        {
-          name: '.git',
-        },
-        {
-          name: 'node_modules',
-        },
-        {
-          name: 'public',
-          children: [
-            {
-              name: 'static',
-              children: [{
-                name: 'logo.png',
-                file: 'png',
-              }],
-            },
-            {
-              name: 'favicon.ico',
-              file: 'png',
-            },
-            {
-              name: 'index.html',
-              file: 'html',
-            },
-          ],
-        },
-        {
-          name: '.gitignore',
-          file: 'txt',
-        },
-        {
-          name: 'babel.config.js',
-          file: 'js',
-        },
-        {
-          name: 'package.json',
-          file: 'json',
-        },
-        {
-          name: 'README.md',
-          file: 'md',
-        },
-        {
-          name: 'vue.config.js',
-          file: 'js',
-        },
-        {
-          name: 'yarn.lock',
-          file: 'txt',
-        },
-      ],
     }),
   }
 </script>
