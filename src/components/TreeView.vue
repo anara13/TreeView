@@ -7,7 +7,6 @@
     item-key="name"
     open-on-click
   >
-  <!--Rajouter ici le fichier -->
     <template v-slot:prepend="{ item, open }">
       <v-icon v-if="!item.file">
         {{ open ? 'mdi-folder-open' : 'mdi-folder' }}
@@ -22,44 +21,41 @@
 <script>
 import  axios  from 'axios'
 
-  export default {
-    props: {
-        fichierJSON: Object
+export default {
+
+  //TODO : lors de l'intégration au projet, à supprimer et à intégrer directement au fichier 
+  created() {
+      axios
+        .get('http://localhost:3000/items') 
+        .then(response => {
+
+          console.log(response.data)
+          this.items = response.data 
+
+        })
+        .catch(error => {
+          console.log('Il y a eu une erreur', error.response)
+        })
     },
 
-    //TODO : intégration au projet, à supprimer
-    created() {
-        axios
-          .get('http://localhost:3000/items') 
-          .then(response => {
+  data: () => ({
+  //permet de se souvenir du dernier fichier ouvert, à modifier
+    initiallyOpen: ['public'],
+    files: {
+      html: 'mdi-language-html5',
+      js: 'mdi-nodejs',
+      json: 'mdi-code-json',
+      md: 'mdi-language-markdown',
+      pdf: 'mdi-file-pdf',
+      png: 'mdi-file-image',
+      txt: 'mdi-file-document-outline',
+      xls: 'mdi-file-excel',
+    },
 
-            console.log(response.data)
-            this.items = response.data 
-
-          })
-          .catch(error => {
-            console.log('There was an error:', error.response)
-          })
-      },
-
-    data: () => ({
-    //permet de se souvenir du dernier fichier ouvert
-      initiallyOpen: ['public'],
-      files: {
-        html: 'mdi-language-html5',
-        js: 'mdi-nodejs',
-        json: 'mdi-code-json',
-        md: 'mdi-language-markdown',
-        pdf: 'mdi-file-pdf',
-        png: 'mdi-file-image',
-        txt: 'mdi-file-document-outline',
-        xls: 'mdi-file-excel',
-      },
-
-      //faire passer ici en props les éléments du fichier parent (SideBar) 
-      items: [],
-      tree: [],
-      
-    }),
-  }
+    //TODO : faire passer ici en props les éléments du fichier parent (SideBar) 
+    items: [],
+    tree: [],
+    
+  }),
+}
 </script>
