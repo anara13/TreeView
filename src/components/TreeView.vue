@@ -24,14 +24,18 @@ import  axios  from 'axios'
 
   export default {
     props: {
-        fichierJSON: [Object, Array, JSON]
+        fichierJSON: Object
     },
 
+    //TODO : intégration au projet, à supprimer
     created() {
         axios
           .get('http://localhost:3000/items') 
           .then(response => {
-            console.log(response.data) 
+
+            console.log(response.data)
+            this.items = response.data 
+
           })
           .catch(error => {
             console.log('There was an error:', error.response)
@@ -51,8 +55,11 @@ import  axios  from 'axios'
         txt: 'mdi-file-document-outline',
         xls: 'mdi-file-excel',
       },
-      tree: [],
+
       //faire passer ici en props les éléments du fichier parent (SideBar) 
+      items: [],
+      tree: [],
+      
     }),
   }
 </script>
