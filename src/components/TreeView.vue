@@ -47,9 +47,9 @@ export default class TreeView extends Vue {
       png: 'mdi-file-image',
       txt: 'mdi-file-document-outline',//pour remplacer les documents textes
       xls: 'mdi-file-excel',
+      
     },
 
-    //TODO : faire passer ici en props les éléments du fichier parent (SideBar) 
     tree: [],
     
     }
