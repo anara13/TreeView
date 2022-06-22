@@ -1,0 +1,43 @@
+<template>
+    <div>
+        <TreeView :items='tree' />
+    </div>
+</template>
+
+<script>
+import { Vue, Component } from 'vue-property-decorator';
+import  axios  from 'axios'
+import TreeView from './TreeView.vue';
+
+    @Component({
+        name: "SideBar",
+        components: { SideBar, TreeView }
+
+    })
+
+export default class SideBar extends Vue { 
+
+    dataLoaded = false;
+
+  created() {
+      axios
+        .get('http://localhost:3000/items') 
+        .then(response => {
+
+          console.log(response.data)
+          this.tree = response.data 
+
+        })
+        .catch(error => {
+          console.log('Il y a eu une erreur', error.response)
+        })
+    }
+
+    data() {
+        return {
+            tree: []
+        }
+    }
+
+}
+</script>

@@ -1,21 +1,21 @@
 <template>
   <v-app>
     <v-main>
-      <TreeView />      
+      <SideBar />     
     </v-main>
   </v-app>
 </template>
 
 <script>
-import TreeView from './components/TreeView';
+import SideBar from './components/SideBar.vue';
 
 
 export default {
   name: 'App',
 
   components: {
-    TreeView,
-  },
+    SideBar
+},
 
 };
 </script>

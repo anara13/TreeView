@@ -19,28 +19,25 @@
 </template> 
 
 <script>
-import  axios  from 'axios'
+import { Vue, Component } from 'vue-property-decorator';
 
-export default {
+  @Component({
+      name: "TreeView",
+      props: {
+          //TODO : intégrer les props à l'usage
+          items: [Array, Object],
+      },
+      components: { TreeView }
+  })
 
-  //TODO : lors de l'intégration au projet, à supprimer et à intégrer directement au fichier 
-  created() {
-      axios
-        .get('http://localhost:3000/items') 
-        .then(response => {
+export default class TreeView extends Vue {
 
-          console.log(response.data)
-          this.items = response.data 
-
-        })
-        .catch(error => {
-          console.log('Il y a eu une erreur', error.response)
-        })
-    },
-
-  data: () => ({
-  //permet de se souvenir du dernier fichier ouvert, à modifier
+  data() 
+  {
+    return {
+    //permet de se souvenir du dernier fichier ouvert, à modifier
     initiallyOpen: ['public'],
+    //TODO : ajouter l'ensemble des extensions nécéssaires pour les extensions de fichier les plus courants
     files: {
       html: 'mdi-language-html5',
       js: 'mdi-nodejs',
@@ -48,14 +45,14 @@ export default {
       md: 'mdi-language-markdown',
       pdf: 'mdi-file-pdf',
       png: 'mdi-file-image',
-      txt: 'mdi-file-document-outline',
+      txt: 'mdi-file-document-outline',//pour remplacer les documents textes
       xls: 'mdi-file-excel',
     },
 
     //TODO : faire passer ici en props les éléments du fichier parent (SideBar) 
-    items: [],
     tree: [],
     
-  }),
+    }
+  }
 }
 </script>
