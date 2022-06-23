@@ -7,7 +7,7 @@
 <script>
 import { Vue, Component } from 'vue-property-decorator';
 import  axios  from 'axios'
-import TreeView from './TreeView.vue';
+import TreeView from '@//componentsTreeView.vue';
 
     @Component({
         name: "SideBar",

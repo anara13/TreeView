@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Généré par Microsoft Visio, SVG Export zenidocapp-blue-small.svg Page 1 -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events"
+		width="2.34826in" height="2.26126in" viewBox="0 0 169.074 162.811" xml:space="preserve" color-interpolation-filters="sRGB"
+		class="st5">
+	<style type="text/css">
+	<![CDATA[
+		.st1 {fill:#3f3f3f;stroke:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.75}
+		.st2 {visibility:visible}
+		.st3 {fill:#000000;fill-opacity:0.4;filter:url(#filter_3.3333334922791);stroke:none;stroke-linecap:round;stroke-linejoin:round}
+		.st4 {fill:url(#grad3-9);stroke:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.75}
+		.st5 {fill:none;fill-rule:evenodd;font-size:12px;overflow:visible;stroke-linecap:square;stroke-miterlimit:3}
+	]]>
+	</style>
+
+	<defs id="Patterns_And_Gradients">
+		<radialGradient id="grad3-9" cx="0.5" cy="0.5" r="0.73">
+			<stop offset="0" stop-color="#46aac4" stop-opacity="1"/>
+			<stop offset="1" stop-color="#205867" stop-opacity="1"/>
+		</radialGradient>
+	</defs>
+	<defs id="Filters">
+		<filter id="filter_3.3333334922791">
+			<feGaussianBlur stdDeviation="3.3333334922791"/>
+		</filter>
+	</defs>
+	<g>
+		<title>Page 1</title>
+		<g id="shape368-1" transform="translate(62.2011,-82.867) rotate(-10)">
+			<title>Feuille.368</title>
+			<rect x="0" y="96.2607" width="66.5502" height="66.5502" class="st1"/>
+		</g>
+		<g id="shape369-3" transform="translate(-11.7155,-69.8335) rotate(-10)">
+			<title>Feuille.369</title>
+			<g id="shadow369-4" transform="matrix(1,0,0,1,7.09062E-08,1.25027E-08)" class="st2">
+				<rect x="0" y="96.2607" width="66.5502" height="66.5502" class="st3"/>
+			</g>
+			<rect x="0" y="96.2607" width="66.5502" height="66.5502" class="st4"/>
+		</g>
+		<g id="shape370-10" transform="translate(1.09815,2.09846) rotate(-10)">
+			<title>Feuille.370</title>
+			<rect x="0" y="96.2607" width="66.5502" height="66.5502" class="st1"/>
+		</g>
+		<g id="shape371-12" transform="translate(8.36206,166.14) rotate(-100)">
+			<title>Feuille.371</title>
+			<rect x="0" y="96.2607" width="66.5502" height="66.5502" class="st1"/>
+		</g>
+	</g>
+</svg>

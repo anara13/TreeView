@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Généré par Microsoft Visio, SVG Export zenidocapp-green-classic.svg Page 1 -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events"
+		width="5.23608in" height="0.756773in" viewBox="0 0 376.998 54.4877" xml:space="preserve" color-interpolation-filters="sRGB"
+		class="st9">
+	<style type="text/css">
+	<![CDATA[
+		.st1 {fill:#3f3f3f;stroke:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.75}
+		.st2 {visibility:visible}
+		.st3 {fill:#000000;fill-opacity:0.4;filter:url(#filter_3.3333334922791);stroke:none;stroke-linecap:round;stroke-linejoin:round}
+		.st4 {fill:url(#grad3-11);stroke:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.75}
+		.st5 {fill:none;stroke:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.75}
+		.st6 {fill:#3f3f3f;font-family:Montserrat Light;font-size:3em;font-weight:bold}
+		.st7 {fill:#00b050;font-size:1em}
+		.st8 {fill:#328d85;font-family:Montserrat Light;font-size:0.833336em;font-weight:bold}
+		.st9 {fill:none;fill-rule:evenodd;font-size:12px;overflow:visible;stroke-linecap:square;stroke-miterlimit:3}
+	]]>
+	</style>
+
+	<defs id="Patterns_And_Gradients">
+		<radialGradient id="grad3-11" cx="0.5" cy="0.5" r="0.73">
+			<stop offset="0" stop-color="#00ef6c" stop-opacity="1"/>
+			<stop offset="1" stop-color="#00803a" stop-opacity="1"/>
+		</radialGradient>
+	</defs>
+	<defs id="Filters">
+		<filter id="filter_3.3333334922791">
+			<feGaussianBlur stdDeviation="3.3333334922791"/>
+		</filter>
+	</defs>
+	<g>
+		<title>Page 1</title>
+		<g id="shape60-1" transform="translate(14.7447,-26.6316) rotate(-10)">
+			<title>Feuille.60</title>
+			<rect x="0" y="36.8961" width="17.5916" height="17.5916" class="st1"/>
+		</g>
+		<g id="shape61-3" transform="translate(-4.7941,-23.1864) rotate(-10)">
+			<title>Feuille.61</title>
+			<rect x="0" y="36.8961" width="17.5916" height="17.5916" class="st1"/>
+		</g>
+		<g id="shape62-5" transform="translate(-1.407,-4.17218) rotate(-10)">
+			<title>Feuille.62</title>
+			<g id="shadow62-6" transform="matrix(1,0,0,1,7.09062E-08,1.25027E-08)" class="st2">
+				<rect x="0" y="36.8961" width="17.5916" height="17.5916" class="st3"/>
+			</g>
+			<rect x="0" y="36.8961" width="17.5916" height="17.5916" class="st4"/>
+		</g>
+		<g id="shape63-12" transform="translate(-8.77541,52.4553) rotate(-100)">
+			<title>Feuille.63</title>
+			<rect x="0" y="36.8961" width="17.5916" height="17.5916" class="st1"/>
+		</g>
+		<g id="shape67-14" transform="translate(59.288,-5.92368)">
+			<title>Feuille.67</title>
+			<desc>Zenidocorganizer</desc>
+			<rect x="0" y="6.29869" width="317.335" height="48.189" class="st5"/>
+			<text x="4" y="41.19" class="st6">Zenidoc<tspan class="st7">organizer</tspan></text>		</g>
+		<g id="shape71-18" transform="translate(58.9143,-5.39157)">
+			<title>Feuille.71</title>
+			<desc>gestion d’agendas &#38; plannings</desc>
+			<rect x="0" y="41.6887" width="252.242" height="12.7989" class="st5"/>
+			<text x="4" y="51.09" class="st8">gestion d’agendas &#38; plannings</text>		</g>
+	</g>
+</svg>

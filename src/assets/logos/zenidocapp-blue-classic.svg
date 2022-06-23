@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Généré par Microsoft Visio, SVG Export zenidocapp-blue-classic.svg Page 1 -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events"
+		width="4.56428in" height="0.704936in" viewBox="0 0 328.628 50.7554" xml:space="preserve" color-interpolation-filters="sRGB"
+		class="st9">
+	<style type="text/css">
+	<![CDATA[
+		.st1 {fill:#3f3f3f;stroke:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.75}
+		.st2 {visibility:visible}
+		.st3 {fill:#000000;fill-opacity:0.4;filter:url(#filter_3.3333334922791);stroke:none;stroke-linecap:round;stroke-linejoin:round}
+		.st4 {fill:url(#grad3-9);stroke:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.75}
+		.st5 {fill:none;stroke:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.75}
+		.st6 {fill:#3f3f3f;font-family:Montserrat Light;font-size:3em;font-weight:bold}
+		.st7 {fill:#00b0f0;font-size:1em}
+		.st8 {fill:#31859b;font-family:Montserrat Light;font-size:0.833336em;font-weight:bold}
+		.st9 {fill:none;fill-rule:evenodd;font-size:12px;overflow:visible;stroke-linecap:square;stroke-miterlimit:3}
+	]]>
+	</style>
+
+	<defs id="Patterns_And_Gradients">
+		<radialGradient id="grad3-9" cx="0.5" cy="0.5" r="0.73">
+			<stop offset="0" stop-color="#46aac4" stop-opacity="1"/>
+			<stop offset="1" stop-color="#205867" stop-opacity="1"/>
+		</radialGradient>
+	</defs>
+	<defs id="Filters">
+		<filter id="filter_3.3333334922791">
+			<feGaussianBlur stdDeviation="3.3333334922791"/>
+		</filter>
+	</defs>
+	<g>
+		<title>Page 1</title>
+		<g id="shape48-1" transform="translate(18.78,-22.0633) rotate(-10)">
+			<title>Feuille.48</title>
+			<rect x="0" y="33.1638" width="17.5916" height="17.5916" class="st1"/>
+		</g>
+		<g id="shape49-3" transform="translate(-0.758834,-18.6181) rotate(-10)">
+			<title>Feuille.49</title>
+			<g id="shadow49-4" transform="matrix(1,0,0,1,7.09062E-08,1.25027E-08)" class="st2">
+				<rect x="0" y="33.1638" width="17.5916" height="17.5916" class="st3"/>
+			</g>
+			<rect x="0" y="33.1638" width="17.5916" height="17.5916" class="st4"/>
+		</g>
+		<g id="shape50-10" transform="translate(2.62827,0.396088) rotate(-10)">
+			<title>Feuille.50</title>
+			<rect x="0" y="33.1638" width="17.5916" height="17.5916" class="st1"/>
+		</g>
+		<g id="shape51-12" transform="translate(-1.71266,52.6999) rotate(-100)">
+			<title>Feuille.51</title>
+			<rect x="0" y="33.1638" width="17.5916" height="17.5916" class="st1"/>
+		</g>
+		<g id="shape64-14" transform="translate(60.8085,-2.19139)">
+			<title>Feuille.64</title>
+			<desc>Zenidocvocal</desc>
+			<rect x="0" y="2.5664" width="267.445" height="48.189" class="st5"/>
+			<text x="4" y="37.46" class="st6">Zenidoc<tspan class="st7">vocal</tspan></text>		</g>
+		<g id="shape68-18" transform="translate(61.693,-1.19498)">
+			<title>Feuille.68</title>
+			<desc>dictée – reconnaissance vocale</desc>
+			<rect x="0" y="37.9564" width="252.242" height="12.7989" class="st5"/>
+			<text x="4" y="47.36" class="st8">dictée – reconnaissance vocale</text>		</g>
+	</g>
+</svg>

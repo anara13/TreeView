@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Généré par Microsoft Visio, SVG Export zenidocapp-purple-classic.svg Page 1 -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events"
+		width="4.3054in" height="0.621863in" viewBox="0 0 309.989 44.7742" xml:space="preserve" color-interpolation-filters="sRGB"
+		class="st7">
+	<style type="text/css">
+	<![CDATA[
+		.st1 {fill:#3f3f3f;stroke:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.75}
+		.st2 {visibility:visible}
+		.st3 {fill:#000000;fill-opacity:0.4;filter:url(#filter_3.3333334922791);stroke:none;stroke-linecap:round;stroke-linejoin:round}
+		.st4 {fill:url(#grad3-13);stroke:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.75}
+		.st5 {fill:none;stroke:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.75}
+		.st6 {fill:#7030a0;font-family:Montserrat Light;font-size:0.833336em;font-weight:bold}
+		.st7 {fill:none;fill-rule:evenodd;font-size:12px;overflow:visible;stroke-linecap:square;stroke-miterlimit:3}
+	]]>
+	</style>
+
+	<defs id="Patterns_And_Gradients">
+		<radialGradient id="grad3-13" cx="0.5" cy="0.5" r="0.73">
+			<stop offset="0" stop-color="#a391ba" stop-opacity="1"/>
+			<stop offset="1" stop-color="#5c4975" stop-opacity="1"/>
+		</radialGradient>
+	</defs>
+	<defs id="Filters">
+		<filter id="filter_3.3333334922791">
+			<feGaussianBlur stdDeviation="3.3333334922791"/>
+		</filter>
+	</defs>
+	<g>
+		<title>Page 1</title>
+		<g id="shape56-1" transform="translate(15.1936,-23.3399) rotate(-10)">
+			<title>Feuille.56</title>
+			<rect x="0" y="27.1826" width="17.5916" height="17.5916" class="st1"/>
+		</g>
+		<g id="shape57-3" transform="translate(-4.3452,-19.8946) rotate(-10)">
+			<title>Feuille.57</title>
+			<rect x="0" y="27.1826" width="17.5916" height="17.5916" class="st1"/>
+		</g>
+		<g id="shape58-5" transform="translate(-0.958098,-0.880447) rotate(-10)">
+			<title>Feuille.58</title>
+			<rect x="0" y="27.1826" width="17.5916" height="17.5916" class="st1"/>
+		</g>
+		<g id="shape59-7" transform="translate(18.5473,-4.31978) rotate(-10)">
+			<title>Feuille.59</title>
+			<g id="shadow59-8" transform="matrix(1,0,0,1,7.09062E-08,1.25027E-08)" class="st2">
+				<rect x="0" y="27.1826" width="17.5916" height="17.5916" class="st3"/>
+			</g>
+			<rect x="0" y="27.1826" width="17.5916" height="17.5916" class="st4"/>
+		</g>
+		<g id="shape70-14" transform="translate(57.3722,-3.58268)">
+			<title>Feuille.70</title>
+			<desc>outils bureautique</desc>
+			<rect x="0" y="31.9752" width="252.242" height="12.7989" class="st5"/>
+			<text x="4" y="41.37" class="st6">outils bureautique</text>		</g>
+	</g>
+</svg>

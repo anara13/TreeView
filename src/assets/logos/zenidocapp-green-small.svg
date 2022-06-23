@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Généré par Microsoft Visio, SVG Export zenidocapp-green-small.svg Page 1 -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events"
+		width="2.28402in" height="2.3255in" viewBox="0 0 164.449 167.436" xml:space="preserve" color-interpolation-filters="sRGB"
+		class="st5">
+	<style type="text/css">
+	<![CDATA[
+		.st1 {fill:#3f3f3f;stroke:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.75}
+		.st2 {visibility:visible}
+		.st3 {fill:#000000;fill-opacity:0.4;filter:url(#filter_3.3333334922791);stroke:none;stroke-linecap:round;stroke-linejoin:round}
+		.st4 {fill:url(#grad3-11);stroke:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.75}
+		.st5 {fill:none;fill-rule:evenodd;font-size:12px;overflow:visible;stroke-linecap:square;stroke-miterlimit:3}
+	]]>
+	</style>
+
+	<defs id="Patterns_And_Gradients">
+		<radialGradient id="grad3-11" cx="0.5" cy="0.5" r="0.73">
+			<stop offset="0" stop-color="#00ef6c" stop-opacity="1"/>
+			<stop offset="1" stop-color="#00803a" stop-opacity="1"/>
+		</radialGradient>
+	</defs>
+	<defs id="Filters">
+		<filter id="filter_3.3333334922791">
+			<feGaussianBlur stdDeviation="3.3333334922791"/>
+		</filter>
+	</defs>
+	<g>
+		<title>Page 1</title>
+		<g id="shape380-1" transform="translate(56.773,-87.4217) rotate(-10)">
+			<title>Feuille.380</title>
+			<rect x="0" y="100.886" width="66.5502" height="66.5502" class="st1"/>
+		</g>
+		<g id="shape381-3" transform="translate(-17.1436,-74.3882) rotate(-10)">
+			<title>Feuille.381</title>
+			<rect x="0" y="100.886" width="66.5502" height="66.5502" class="st1"/>
+		</g>
+		<g id="shape382-5" transform="translate(-4.32997,-2.45626) rotate(-10)">
+			<title>Feuille.382</title>
+			<g id="shadow382-6" transform="matrix(1,0,0,1,7.09062E-08,1.25027E-08)" class="st2">
+				<rect x="0" y="100.886" width="66.5502" height="66.5502" class="st3"/>
+			</g>
+			<rect x="0" y="100.886" width="66.5502" height="66.5502" class="st4"/>
+		</g>
+		<g id="shape383-12" transform="translate(-0.817668,166.943) rotate(-100)">
+			<title>Feuille.383</title>
+			<rect x="0" y="100.886" width="66.5502" height="66.5502" class="st1"/>
+		</g>
+	</g>
+</svg>
