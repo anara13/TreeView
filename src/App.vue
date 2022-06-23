@@ -1,20 +1,19 @@
 <template>
   <v-app>
     <v-main>
-      <SideBar />     
+      <router-link to="/Ged">Ged</router-link>
+      <router-view></router-view>
     </v-main>
   </v-app>
 </template>
 
 <script>
-import SideBar from '@/views/SideBar.vue';
 
 
 export default {
   name: 'App',
 
   components: {
-    SideBar
 },
 
 };

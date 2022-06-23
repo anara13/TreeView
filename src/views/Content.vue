@@ -44,7 +44,7 @@
     import Vue from 'vue';
     import Component from 'vue-class-component';
     import axios from 'axios';
-    import PortalAPI from '../../api/portal';
+    //import PortalAPI from '../../api/portal';
 
     @Component({})
     export default class Content extends Vue {
@@ -86,7 +86,7 @@
          * Récupère et affiche le fichier sélectionné 
          * TODO: intégrer un message d'erreur si le fichier n'a pas été trouvé (pour plus tard quand on aura accès au serveur)
          */
-        fetchAndReadFile(filePath) {     
+        /*fetchAndReadFile(filePath) {     
             let searchURL = '';
             PortalAPI.visuarbc_getfile(filePath)
                 .then((response) => {
@@ -104,7 +104,7 @@
             }, 3000);
 
             
-        }
+        }*/
 
         fetchAndPrintFile() {
             // TODO: "SecurityError: Permission denied to access property "print" on cross-origin object"

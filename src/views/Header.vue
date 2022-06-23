@@ -6,7 +6,7 @@
 
 <script>
     import { Vue, Component } from 'vue-property-decorator';
-    import Store from '@/store';
+    import Store from '@/store.ts';
     import PortalAPI from '@/api/portal';
     import Menu from '@/components/Menu.vue';
 

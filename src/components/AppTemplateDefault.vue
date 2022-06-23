@@ -8,7 +8,6 @@
                     <h1>Zenidoc</h1>
                 </div>
                 <div>
-                    <router-view name="header"/>
                 </div>
 
             </div>
@@ -17,14 +16,11 @@
 
                 <aside v-if="showSideMenu" class="side-panel">
                     <div class="container">
-                        <router-view name="sidepanel"
-                        />
                         <img class="filigran" src="../assets/logos/zenidoc-cloud-light.svg" alt="">
                     </div>
                 </aside>
 
                 <main class="content">
-                    <router-view name="content"/>
                 </main>
 
             </div>
