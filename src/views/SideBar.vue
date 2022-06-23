@@ -17,10 +17,10 @@ import TreeView from '@//components/TreeView.vue';
 
 export default class SideBar extends Vue { 
 
-//ici, permet de récupérer les données 
+//ici, permet de récupérer les données depuis un serveur
   created() {
       axios
-        .get('http://localhost:3000/items') 
+        .get('http://localhost:3000/compilerOptions') 
         .then(response => {
 
           console.log(response.data)

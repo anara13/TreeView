@@ -20,7 +20,7 @@
                 <iframe v-else :src="source" style="width:99%;height:100%;" id="printf" name="printf"></iframe>
             </div>
 
-            <!-- Waiting screen before server response
+            Waiting screen before server response
             <div v-if="calculatingResponse">
                 <svg class="rotator" style="width:120px;height:120px; margin: 130px auto 20px auto; display: block" viewBox="0 0 24 24">
                     <path fill="#ddd" d="M12,18A6,6 0 0,1 6,12C6,11 6.25,10.03 6.7,9.2L5.24,7.74C4.46,8.97 4,10.43 4,12A8,8 0 0,0 12,20V23L16,19L12,15M12,4V1L8,5L12,9V6A6,6 0 0,1 18,12C18,13 17.75,13.97 17.3,14.8L18.76,16.26C19.54,15.03 20,13.57 20,12A8,8 0 0,0 12,4Z" />
@@ -28,7 +28,7 @@
                 <h2 class="h2" style="text-align: center; color: #888;">Récupération du fichier...</h2>
             </div>
 
-            <!-- Initial screen 
+            Initial screen 
             <div v-if="source.length === 0">
                 <div style="font-size: 24px; text-align: center;">
                     <i class="far fa-file fa-10x" style="transform: rotate(-3deg);width:240px;height:240px; margin: 130px auto 20px auto; display: block; color: #ddd" viewBox="0 0 24 24"></i>

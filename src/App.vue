@@ -1,7 +1,13 @@
 <template>
   <v-app>
     <v-main>
-      <router-link to="/Ged">Ged</router-link>
+      <v-app-bar>
+          <v-btn><router-link to="/ged">Header + Content + SideBar</router-link></v-btn>
+          <v-btn><router-link to="/SideBar">SideBar (avec TreeView)</router-link></v-btn>
+          <v-btn><router-link to="/Header">Header</router-link></v-btn>
+          <v-btn><router-link to="/Content">Content</router-link></v-btn>
+      </v-app-bar>
+      <AppTemplateDefault/>
       <router-view></router-view>
     </v-main>
   </v-app>
@@ -18,3 +24,9 @@ export default {
 
 };
 </script>
+
+<style scoped>
+.Liens {
+  text-align: center;
+}
+</style>
