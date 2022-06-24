@@ -6,6 +6,7 @@
     activatable
     item-key="name"
     open-on-click
+    @update:active="leftClick"
   >
     <template v-slot:prepend="{ item, open }">
     <v-container>
@@ -55,6 +56,14 @@ export default class TreeView extends Vue {
     tree: [],
     
     }
+  }
+
+  //permet la récupération du nom de l'élément en cours sélectionné
+  leftClick(value) {
+    let itemPath = value;
+    console.log(itemPath)
+    this.$root.$emit('item-left-clicked', itemPath);
+    // this.$emit('item-left-clicked', itemPath);
   }
 }
 </script>

@@ -1,7 +1,9 @@
+<!--Contient ici l'ensemble des éléments à afficher par la route /ged sans passer par vue router-->
 <template>
     <div>
         <Header />
         <SideBar />
+        <Content />
     </div>
 </template>
 

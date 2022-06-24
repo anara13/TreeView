@@ -7,7 +7,7 @@
 <script>
 import { Vue, Component } from 'vue-property-decorator';
 import  axios  from 'axios'
-import TreeView from '@//components/TreeView.vue';
+import TreeView from '@/components/TreeView.vue';
 
     @Component({
         name: "SideBar",
@@ -20,10 +20,10 @@ export default class SideBar extends Vue {
 //ici, permet de récupérer les données depuis un serveur
   created() {
       axios
-        .get('http://localhost:3000/compilerOptions') 
+        .get('http://localhost:3000/items') 
         .then(response => {
 
-          console.log(response.data)
+          //console.log(response.data)
           this.tree = response.data 
 
         })

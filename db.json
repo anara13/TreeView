@@ -45,6 +45,10 @@
     "file": "md"
   },
   {
+    "name": "lorem-ipsum.pdf",
+    "file": "txt"
+  },
+  {
     "name": "vue.config.js",
     "file": "js"
   },
