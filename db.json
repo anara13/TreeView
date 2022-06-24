@@ -29,28 +29,16 @@
     ]
   },
   {
-    "name": ".gitignore",
-    "file": "txt"
-  },
-  {
-    "name": "babel.config.js",
-    "file": "js"
-  },
-  {
-    "name": "package.json",
-    "file": "json"
-  },
-  {
-    "name": "README.md",
-    "file": "md"
-  },
-  {
     "name": "lorem-ipsum.pdf",
     "file": "txt"
   },
   {
-    "name": "vue.config.js",
-    "file": "js"
+    "name": "sample_video.mp4",
+    "file": "txt"
+  },
+  {
+    "name": "google_image.png",
+    "file": "png"
   },
   {
     "name": "yarn.lock",
