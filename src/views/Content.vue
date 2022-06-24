@@ -141,17 +141,17 @@
 
             //le lien vers le fichier
             //TODO : à des fins de test uniquement, à supprimer lorsque l'on pourra avoir accès aux fichiers
-            if(this.pathExtension == "pdf")
+            if(this.fileType == "pdf")
             {
                 this.source = 'https://www.soundczech.cz/temp/lorem-ipsum.pdf';
             }
 
-            else if(this.pathExtension == "mp4")
+            else if(this.fileType == "mp4")
             {
                 this.source = 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4';
             }
 
-            else if(this.pathExtension == "png")
+            else if(this.fileType == "png")
             {
                 this.source = 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Google_Images_2015_logo.svg/640px-Google_Images_2015_logo.svg.png';
             }
