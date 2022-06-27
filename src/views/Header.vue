@@ -8,9 +8,8 @@
 import { Vue, Component } from 'vue-property-decorator';
 
     @Component({
-            components: {
-                Header,
-            }
+        name: "Header",
+        components: { Header,}
     })
     export default class Header extends Vue {
         

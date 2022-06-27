@@ -36,6 +36,13 @@
                 <h2 class="h2" style="text-align: center; color: #888;">Recherchez un fichier à afficher dans l'arborescence</h2>
             </div>
 
+            <!--Error screen-->
+            <div v-if="error">
+                <div style="font-size: 24px; text-align: center;">
+                    <i class="far fa-file fa-10x" style="transform: rotate(-3deg);width:240px;height:240px; margin: 130px auto 20px auto; display: block; color: #ddd" viewBox="0 0 24 24"></i>
+                </div>
+                <h2 class="h2" style="text-align: center; color: #888;">Le fichier que vous avez sélectionné n'a pas été trouvé</h2>
+            </div>
     </div>
 </div>
 </template>
@@ -54,6 +61,7 @@
         fileType;
         pathItem ="";
         pathExtension="";
+        isError = false;
         mounted() {
             this.addFontAwesome();
             //on récupère ici l'élément sélectionné dans le treeView
@@ -83,31 +91,6 @@
             this.addFontAwesome();
         }
 
-        //impossible de l'utiliser tant que pas intégré au projet principal
-        /**
-         * Récupère et affiche le fichier sélectionné 
-         * TODO: intégrer un message d'erreur si le fichier n'a pas été trouvé (pour plus tard quand on aura accès au serveur)
-         */
-        /*fetchAndReadFile(filePath) {     
-            let searchURL = '';
-            PortalAPI.visuarbc_getfile(filePath)
-                .then((response) => {
-                    searchURL = response[0];
-                    this.source = searchURL;
-                })
-                .catch((error) => {
-                    this.source = '';
-                })
-
-
-            setTimeout(()=> {
-                this.resultLoaded = true; 
-                this.calculatingResponse = false;
-            }, 3000);
-
-            
-        }*/
-
         fetchAndPrintFile() {
             // TODO: "SecurityError: Permission denied to access property "print" on cross-origin object"
             // Erreur à cause de Firefox (aussi sur IE apparemment)
@@ -116,7 +99,7 @@
             // iframe.src = 'https://docs.google.com/gview?url='+'http://dictee.zenidoc.com:9000/cache/123456789.pdf';
             let iframe = document.createElement('iframe');
             document.body.appendChild(iframe);
-            iframe.src = 'http://dictee.zenidoc.com:9000/cache/123456789.pdf';
+            // iframe.src = 'http://dictee.zenidoc.com:9000/cache/123456789.pdf';
             iframe.style.visibility = 'hidden';
             iframe.onload = function() {
                 console.log("file loaded");
@@ -128,20 +111,53 @@
             };
         }
 
+        /**
+         * Récupère et affiche le fichier sélectionné 
+         * TODO: intégrer un message d'erreur si le fichier n'a pas été trouvé (pour plus tard quand on aura accès au serveur)
+         */
         fetchAndReadFile(itemPath){
 
             //on récup le nom du fichier sélectionné
             this.calculatingResponse = true;
-            //l'extension du fichier
-            this.pathExtension = itemPath.split('.').shift();
-            console.log(this.pathExtension)
             //le nom du fichier
+            this.pathExtension = itemPath.split('.').shift();
+            //l'extension du fichier
             this.fileType = itemPath.split('.').pop();
-            console.log(this.fileType)
+             
+            //TODO: à afficher lorsque l'on aura accès au serveur
+            let searchURL = '';
+            /*PortalAPI.visuarbc_getfile(filePath)
+                .then((response) => {
+                    searchURL = response[0];
+                    this.source = searchURL;
+                })
+                .catch((error) => {
+                    this.source = '';
+                    console.log('Fichier non trouvé' + error)
+                    isError = true;
+                })
+
+
+            setTimeout(()=> {
+                this.resultLoaded = true; 
+                this.calculatingResponse = false;
+            }, 3000);*/
+
 
             //le lien vers le fichier
-            //TODO : à des fins de test uniquement, à supprimer lorsque l'on pourra avoir accès aux fichiers
-            if(this.fileType == "pdf")
+
+            //si c'est un document pouvant être visualisé par microsoft office, alors il a un lien spécial
+            if(this.fileType == "docx" || this.fileType == "doc" || this.fileType == "docm" || this.fileType == "dotm" || this.fileType == "dotx" || this.fileType == "xlsx" || this.fileType == "xlsb" || this.fileType == "xls" || this.fileType == "xlsm" || this.fileType == "pptx" || this.fileType == "ppsx" || this.fileType == "ppt" || this.fileType == "pps" || this.fileType == "pptm" || this.fileType == "potm" || this.fileType == "ppam" || this.fileType == "potx" || this.fileType == "ppsm")
+            {
+                //TODO: searchURL à supprimer quand on aura accès au serveur
+                searchURL = 'https://github.com/poychang/blog.poychang.net/raw/master/assets/post-files/THIS-IS-WORD.docx'
+                //this.source = 'https://view.officeapps.live.com/op/view.aspx?src=' + searchURL;
+                //ou
+                this.source = 'https://view.officeapps.live.com/op/embed.aspx?src=' + searchURL;
+
+            }
+            //TODO : à des fins de test uniquement, à supprimer lorsque l'on pourra avoir accès aux fichiers sur le serveur
+            else if(this.fileType == "pdf")
             {
                 this.source = 'https://www.soundczech.cz/temp/lorem-ipsum.pdf';
             }
@@ -156,9 +172,9 @@
                 this.source = 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Google_Images_2015_logo.svg/640px-Google_Images_2015_logo.svg.png';
             }
 
+            
             //indiquer au template que le fichier a bien été chargé
             this.resultLoaded = true;
-
             this.calculatingResponse = false;
 
         }

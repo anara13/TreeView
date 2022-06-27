@@ -30,15 +30,19 @@
   },
   {
     "name": "lorem-ipsum.pdf",
-    "file": "txt"
+    "file": "pdf"
   },
   {
     "name": "sample_video.mp4",
-    "file": "txt"
+    "file": "mp4"
   },
   {
     "name": "google_image.png",
     "file": "png"
+  },
+  {
+    "name": "word.docx",
+    "file": "docx"
   },
   {
     "name": "yarn.lock",

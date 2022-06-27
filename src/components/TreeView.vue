@@ -27,7 +27,6 @@ import { Vue, Component } from 'vue-property-decorator';
   @Component({
       name: "TreeView",
       props: {
-          //TODO : intégrer les props à l'usage
           items: [Array, Object],
       },
       components: { TreeView }
@@ -35,21 +34,41 @@ import { Vue, Component } from 'vue-property-decorator';
 
 export default class TreeView extends Vue {
 
-  data() 
-  {
+  data() {
     return {
-    //permet de se souvenir du dernier fichier ouvert, à modifier
+    //TODO: permet de se souvenir du dernier fichier ouvert, à modifier
     initiallyOpen: ['public'],
-    //TODO : ajouter l'ensemble des extensions nécessaires pour les extensions de fichier les plus courants
     files: {
       html: 'mdi-language-html5',
       js: 'mdi-nodejs',
       json: 'mdi-code-json',
       md: 'mdi-language-markdown',
-      pdf: 'mdi-file-pdf',
+      pdf: 'mdi-file-pdf-box',
       png: 'mdi-file-image',
-      txt: 'mdi-file-document-outline',//pour remplacer les documents textes
+      txt: 'mdi-file-document-outline',
+      wav: 'mdi-filmstrip',
+      mp4: 'mdi-filmstrip',
+      bmp: 'mdi-file-image',
+      docx: 'mdi-file-document',
+      docm: 'mdi-file-document', 
+      dotm: 'mdi-file-document', 
+      dotx: 'mdi-file-document', 
+      doc: 'mdi-file-document',
       xls: 'mdi-file-excel',
+      xlsx: 'mdi-file-excel', 
+      xlsb: 'mdi-file-excel', 
+      xlsm: 'mdi-file-excel',
+      pptx: 'mdi-file-presentation-box', 
+      ppsx: 'mdi-file-presentation-box', 
+      ppt: 'mdi-file-presentation-box', 
+      pps: 'mdi-file-presentation-box', 
+      pptm: 'mdi-file-presentation-box', 
+      potm: 'mdi-file-presentation-box', 
+      ppam: 'mdi-file-presentation-box', 
+      potx: 'mdi-file-presentation-box', 
+      ppsm: 'mdi-file-presentation-box',
+      else: 'mdi-file-outline'
+
       
     },
 
@@ -58,6 +77,9 @@ export default class TreeView extends Vue {
     }
   }
 
+  /**
+   * Emet l'événement @click au composant parent
+   */
   //permet la récupération du nom de l'élément en cours sélectionné
   leftClick(value) {
     let itemPath = value;
@@ -65,5 +87,16 @@ export default class TreeView extends Vue {
     this.$root.$emit('item-left-clicked', itemPath);
     // this.$emit('item-left-clicked', itemPath);
   }
+
+  /**
+   * Emet l'événement @contextmenu au composant parent
+   */
+  rightClick() {
+      let DOMElementRightClicked = this.$el;
+      event.preventDefault();
+      this.$root.$emit('item-right-clicked', DOMElementRightClicked);
+      // this.$emit('item-right-clicked', event);
+  }
+
 }
 </script>
