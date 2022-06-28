@@ -83,7 +83,6 @@ export default class TreeView extends Vue {
   //permet la récupération du nom de l'élément en cours sélectionné
   leftClick(value) {
     let itemPath = value;
-    console.log(itemPath)
     this.$root.$emit('item-left-clicked', itemPath);
     // this.$emit('item-left-clicked', itemPath);
   }
