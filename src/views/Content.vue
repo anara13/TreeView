@@ -64,7 +64,7 @@
         isError = false;
         mounted() {
             this.addFontAwesome();
-            //on récupère ici l'élément sélectionné dans le treeView
+            //on récupère ici l'élément sélectionné depuis le treeView
             this.$root.$on('item-left-clicked', itemPath => {
                 //this.resultLoaded = false;
                 //this.calculatingResponse = true;
@@ -117,11 +117,8 @@
          */
         fetchAndReadFile(itemPath){
 
-            //on récup le nom du fichier sélectionné
             this.calculatingResponse = true;
-            //le nom du fichier
             this.pathExtension = itemPath.split('.').shift();
-            //l'extension du fichier
             this.fileType = itemPath.split('.').pop();
              
             //TODO: à afficher lorsque l'on aura accès au serveur
@@ -145,11 +142,11 @@
 
 
             //le lien vers le fichier
+            //TODO: searchURL à supprimer quand on aura accès au serveur car il n'est plus nécessaire de mettre un lien direct
 
             //si c'est un document pouvant être visualisé par microsoft office, alors il a un lien spécial
             if(this.fileType == "docx" || this.fileType == "doc" || this.fileType == "docm" || this.fileType == "dotm" || this.fileType == "dotx" || this.fileType == "xlsx" || this.fileType == "xlsb" || this.fileType == "xls" || this.fileType == "xlsm" || this.fileType == "pptx" || this.fileType == "ppsx" || this.fileType == "ppt" || this.fileType == "pps" || this.fileType == "pptm" || this.fileType == "potm" || this.fileType == "ppam" || this.fileType == "potx" || this.fileType == "ppsm")
             {
-                //TODO: searchURL à supprimer quand on aura accès au serveur
                 searchURL = 'https://github.com/poychang/blog.poychang.net/raw/master/assets/post-files/THIS-IS-WORD.docx'
                 //this.source = 'https://view.officeapps.live.com/op/view.aspx?src=' + searchURL;
                 //ou
@@ -159,17 +156,20 @@
             //TODO : à des fins de test uniquement, à supprimer lorsque l'on pourra avoir accès aux fichiers sur le serveur
             else if(this.fileType == "pdf")
             {
-                this.source = 'https://www.soundczech.cz/temp/lorem-ipsum.pdf';
+                searchURL = 'https://www.soundczech.cz/temp/lorem-ipsum.pdf';
+                this.source = searchURL;
             }
 
             else if(this.fileType == "mp4")
             {
-                this.source = 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4';
+                searchURL = 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4';
+                this.source = searchURL;
             }
 
             else if(this.fileType == "png")
             {
-                this.source = 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Google_Images_2015_logo.svg/640px-Google_Images_2015_logo.svg.png';
+                searchURL = 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Google_Images_2015_logo.svg/640px-Google_Images_2015_logo.svg.png';
+                this.source = searchURL;
             }
 
             

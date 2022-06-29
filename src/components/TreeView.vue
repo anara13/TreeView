@@ -73,7 +73,8 @@ export default class TreeView extends Vue {
       ppam: 'mdi-file-presentation-box', 
       potx: 'mdi-file-presentation-box', 
       ppsm: 'mdi-file-presentation-box',
-      else: 'mdi-file-outline'
+      //TODO : implémenter une icône basique pour tous les autres fichiers qui ne sont pas des dossiers
+      //else: 'mdi-file-outline'
 
       
     },
