@@ -7,7 +7,6 @@
     item-key="name"
     open-on-click
     @update:active="leftClick"
-    @contextmenu="rightClick"
   >
     <template v-slot:prepend="{ item, open }">
       <v-container>
@@ -19,9 +18,12 @@
         </v-icon>
       </v-container>
     </template>
+
+    <!--Pour l'affichage du context menu-->
     <template v-slot:label="{ item }">
-      <div @contextmenu.prevent="rightClick($event, item)">{{ item.basename }}></div>
+      <div @contextmenu.prevent="rightClick($event, item)">{{ item.name }}</div>
     </template>
+    
   </v-treeview>  
 </template> 
 
@@ -95,7 +97,7 @@ export default class TreeView extends Vue {
    * Emet l'événement @contextmenu au composant parent
    */
   //permet la récupération de l'élément en cours pour affichage du context menu
-  rightClick() {
+  rightClick(item) {//item transmet le nom de l'élément sélectionné
       let DOMElementRightClicked = this.$el;
       event.preventDefault();
       this.$root.$emit('item-right-clicked', DOMElementRightClicked);
