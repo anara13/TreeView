@@ -36,13 +36,13 @@
                 <h2 class="h2" style="text-align: center; color: #888;">Recherchez un fichier à afficher dans l'arborescence</h2>
             </div>
 
-            <!--Error screen-->
+            <!--Error screen
             <div v-if="error">
                 <div style="font-size: 24px; text-align: center;">
                     <i class="far fa-file fa-10x" style="transform: rotate(-3deg);width:240px;height:240px; margin: 130px auto 20px auto; display: block; color: #ddd" viewBox="0 0 24 24"></i>
                 </div>
                 <h2 class="h2" style="text-align: center; color: #888;">Le fichier que vous avez sélectionné n'a pas été trouvé</h2>
-            </div>
+            </div>-->
     </div>
 </div>
 </template>

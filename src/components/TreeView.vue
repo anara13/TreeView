@@ -7,18 +7,22 @@
     item-key="name"
     open-on-click
     @update:active="leftClick"
+    @contextmenu="rightClick"
   >
     <template v-slot:prepend="{ item, open }">
-    <v-container>
-      <v-icon v-if="!item.file">
-        {{ open ? 'mdi-folder-open' : 'mdi-folder' }}
-      </v-icon>
-      <v-icon v-else>
-        {{ files[item.file] }}
-      </v-icon>
+      <v-container>
+        <v-icon v-if="!item.file">
+          {{ open ? 'mdi-folder-open' : 'mdi-folder' }}
+        </v-icon>
+        <v-icon v-else>
+          {{ files[item.file] }}
+        </v-icon>
       </v-container>
     </template>
-  </v-treeview>
+    <template v-slot:label="{ item }">
+      <div @contextmenu.prevent="rightClick($event, item)">{{ item.basename }}></div>
+    </template>
+  </v-treeview>  
 </template> 
 
 <script>
@@ -36,7 +40,7 @@ export default class TreeView extends Vue {
 
   data() {
     return {
-    //TODO: permet de se souvenir du dernier fichier ouvert, à modifier
+    //TODO: permet de se souvenir du dernier fichier ouvert, à modifier pour que ce soit dynamique en fonction de la dernière session utilisateur
     initiallyOpen: ['public'],
     files: {
       html: 'mdi-language-html5',
@@ -80,7 +84,7 @@ export default class TreeView extends Vue {
   /**
    * Emet l'événement @click au composant parent
    */
-  //permet la récupération du nom de l'élément en cours sélectionné
+  //permet la récupération du nom de l'élément en cours sélectionné pour l'affichage dans l'explorateur
   leftClick(value) {
     let itemPath = value;
     this.$root.$emit('item-left-clicked', itemPath);
@@ -90,6 +94,7 @@ export default class TreeView extends Vue {
   /**
    * Emet l'événement @contextmenu au composant parent
    */
+  //permet la récupération de l'élément en cours pour affichage du context menu
   rightClick() {
       let DOMElementRightClicked = this.$el;
       event.preventDefault();
