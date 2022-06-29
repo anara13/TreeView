@@ -97,9 +97,9 @@ export default class TreeView extends Vue {
    * Emet l'événement @contextmenu au composant parent
    */
   //permet la récupération de l'élément en cours pour affichage du context menu
-  rightClick(item) {//item transmet le nom de l'élément sélectionné
-      let DOMElementRightClicked = this.$el;
-      event.preventDefault();
+  rightClick($event, item) {
+      let DOMElementRightClicked = $event.target;
+      $event.preventDefault();
       this.$root.$emit('item-right-clicked', DOMElementRightClicked);
       // this.$emit('item-right-clicked', event);
   }
