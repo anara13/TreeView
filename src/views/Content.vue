@@ -11,12 +11,12 @@
             <div v-if="pathExtension=='jpg' || pathExtension=='png' || pathExtension=='gif' || pathExtension=='bmp' || pathExtension=='ico'">
                 <img :src="pathItem" style="display:block; margin: 30vh auto" />
             </div>-->
-            
+
             <!-- Rendering the loaded file -->
             <div v-if="resultLoaded" id="file-preview" style="width:100%;height:800px;">
-                <audio v-if="fileType === 'wav'" :src="source" type="audio/wav" controls="controls"></audio>
+                <audio v-if="pathExtension === 'avi' || fileType === 'wav'" :src="source" type="audio/wav" controls="controls"></audio>
                 <video v-else-if="fileType === 'mp4'" type="video/mp4" :src="source" controls="controls" width="1280" height="800"></video>
-                <img v-else-if="fileType === 'bmp' || fileType === 'png'" :src="source" alt="Fichier téléchargé" height="auto" width="auto">
+                <img v-else-if="fileType === 'bmp' || fileType === 'png' || pathExtension=='ico' || pathExtension=='gif' || pathExtension=='jpg'" :src="source" alt="Fichier téléchargé" height="auto" width="auto">
                 <iframe v-else :src="source" style="width:99%;height:100%;" id="printf" name="printf"></iframe>
             </div>
 
@@ -29,20 +29,20 @@
             </div>
 
             <!-- Initial screen -->
-            <div v-if="source.length === 0">
+            <div v-show="source.length === 0 && isError === false">
                 <div style="font-size: 24px; text-align: center;">
                     <i class="far fa-file fa-10x" style="transform: rotate(-3deg);width:240px;height:240px; margin: 130px auto 20px auto; display: block; color: #ddd" viewBox="0 0 24 24"></i>
                 </div>
                 <h2 class="h2" style="text-align: center; color: #888;">Recherchez un fichier à afficher dans l'arborescence</h2>
             </div>
 
-            <!--Error screen
-            <div v-if="error">
+            <!--Error screen-->
+            <div v-if="isError">
                 <div style="font-size: 24px; text-align: center;">
-                    <i class="far fa-file fa-10x" style="transform: rotate(-3deg);width:240px;height:240px; margin: 130px auto 20px auto; display: block; color: #ddd" viewBox="0 0 24 24"></i>
+                    <i class="fas fa-exclamation-triangle fa-10x" style="transform: width:240px;height:240px; margin: 130px auto 20px auto; display: block; color: #ddd" viewBox="0 0 24 24"></i>
                 </div>
                 <h2 class="h2" style="text-align: center; color: #888;">Le fichier que vous avez sélectionné n'a pas été trouvé</h2>
-            </div>-->
+            </div>
     </div>
 </div>
 </template>
@@ -66,13 +66,9 @@
             this.addFontAwesome();
             //on récupère ici l'élément sélectionné depuis le treeView
             this.$root.$on('item-left-clicked', itemPath => {
-                //this.resultLoaded = false;
-                //this.calculatingResponse = true;
                 this.pathItem = itemPath.toString();
                 //this.pathExtension = itemPath.split('.').pop();
                 //this.$emit('clicked', 'true')
-                // TODO: sur l'exemple de https://stackoverflow.com/questions/27957766/how-do-i-render-a-word-document-doc-docx-in-the-browser-using-javascript
-                // this.source = 'https://docs.google.com/gview?url='+'http://dictee.zenidoc.com:9000/cache/123456789.pdf';
                 //this.source = "loading";
                 //this.fileType = "pdf";
                 
@@ -113,20 +109,87 @@
 
         /**
          * Récupère et affiche le fichier sélectionné 
-         * TODO: intégrer un message d'erreur si le fichier n'a pas été trouvé (pour plus tard quand on aura accès au serveur)
          */
+        //avec récupération d'url statique
         fetchAndReadFile(itemPath){
 
+            this.isError = false;
             this.calculatingResponse = true;
             this.pathExtension = itemPath.split('.').shift();
             this.fileType = itemPath.split('.').pop();
+            this.source = '';
+            this.resultLoaded = false;
              
-            //TODO: à afficher lorsque l'on aura accès au serveur
             let searchURL = '';
-            /*PortalAPI.visuarbc_getfile(filePath)
+
+            //le lien vers le fichier
+            //si c'est un document pouvant être visualisé par microsoft office, alors il a un lien spécial
+            if(this.fileType == "docx" || this.fileType == "doc" || this.fileType == "docm" || this.fileType == "dotm" || this.fileType == "dotx" || this.fileType == "xlsx" || this.fileType == "xlsb" || this.fileType == "xls" || this.fileType == "xlsm" || this.fileType == "pptx" || this.fileType == "ppsx" || this.fileType == "ppt" || this.fileType == "pps" || this.fileType == "pptm" || this.fileType == "potm" || this.fileType == "ppam" || this.fileType == "potx" || this.fileType == "ppsm")
+            {
+                //TODO: choisir le visuel souhaité
+                searchURL = 'https://github.com/poychang/blog.poychang.net/raw/master/assets/post-files/THIS-IS-WORD.docx'
+                //avec le bandeau Microsoft
+                //this.source = 'https://view.officeapps.live.com/op/view.aspx?src=' + searchURL;
+                //ou en fonction du rendu visuel que l'on souhaite avoir
+                //sans le bandeau Microsoft
+                this.source = 'https://view.officeapps.live.com/op/embed.aspx?src=' + searchURL;
+
+            }
+
+            else if(this.fileType == "pdf")
+            {
+                searchURL = 'https://www.soundczech.cz/temp/lorem-ipsum.pdf';
+                this.source = searchURL;
+                this.resultLoaded = true;
+
+            }
+
+            else if(this.fileType == "mp4")
+            {
+                searchURL = 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4';
+                this.source = searchURL;
+                this.resultLoaded = true;
+
+            }
+
+            else if(this.fileType == "png")
+            {
+                searchURL = 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Google_Images_2015_logo.svg/640px-Google_Images_2015_logo.svg.png';
+                this.source = searchURL;
+                this.resultLoaded = true;
+
+            }
+
+            //pour simuler un écran d'erreur
+            else if(this.fileType == "html")
+            {
+                this.isError = true;
+
+            }
+            
+            //indiquer au template que le fichier a bien été chargé
+            this.calculatingResponse = false;
+
+        }
+        
+        /**
+         * Récupère et affiche le fichier sélectionné 
+         */
+        //TODO : à afficher lorsque l'on aura accès au serveur (avec récupération url fichier via API)
+        /*fetchAndReadFile(itemPath){
+
+            this.isError = false;
+            this.calculatingResponse = true;
+            this.pathExtension = itemPath.split('.').shift();
+            this.fileType = itemPath.split('.').pop();
+            this.source = '';
+            this.resultLoaded = false;
+             
+            let searchURL = '';
+            PortalAPI.visuarbc_getfile(itemPath)
                 .then((response) => {
                     searchURL = response[0];
-                    this.source = searchURL;
+                    //this.source = searchURL;
                 })
                 .catch((error) => {
                     this.source = '';
@@ -134,50 +197,36 @@
                     isError = true;
                 })
 
-
             setTimeout(()=> {
                 this.resultLoaded = true; 
                 this.calculatingResponse = false;
-            }, 3000);*/
-
+            }, 3000);
 
             //le lien vers le fichier
-            //TODO: searchURL à supprimer quand on aura accès au serveur car il n'est plus nécessaire de mettre un lien direct
-
-            //si c'est un document pouvant être visualisé par microsoft office, alors il a un lien spécial
-            if(this.fileType == "docx" || this.fileType == "doc" || this.fileType == "docm" || this.fileType == "dotm" || this.fileType == "dotx" || this.fileType == "xlsx" || this.fileType == "xlsb" || this.fileType == "xls" || this.fileType == "xlsm" || this.fileType == "pptx" || this.fileType == "ppsx" || this.fileType == "ppt" || this.fileType == "pps" || this.fileType == "pptm" || this.fileType == "potm" || this.fileType == "ppam" || this.fileType == "potx" || this.fileType == "ppsm")
+            if(!isError)
             {
-                searchURL = 'https://github.com/poychang/blog.poychang.net/raw/master/assets/post-files/THIS-IS-WORD.docx'
-                //this.source = 'https://view.officeapps.live.com/op/view.aspx?src=' + searchURL;
-                //ou
-                this.source = 'https://view.officeapps.live.com/op/embed.aspx?src=' + searchURL;
+                //si c'est un document pouvant être visualisé par microsoft office, alors il a un lien spécial
+                if(this.fileType == "docx" || this.fileType == "doc" || this.fileType == "docm" || this.fileType == "dotm" || this.fileType == "dotx" || this.fileType == "xlsx" || this.fileType == "xlsb" || this.fileType == "xls" || this.fileType == "xlsm" || this.fileType == "pptx" || this.fileType == "ppsx" || this.fileType == "ppt" || this.fileType == "pps" || this.fileType == "pptm" || this.fileType == "potm" || this.fileType == "ppam" || this.fileType == "potx" || this.fileType == "ppsm")
+                {
+                    //TODO: choisir le visuel souhaité                
+                    //avec le bandeau microsoft 
+                    //this.source = 'https://view.officeapps.live.com/op/view.aspx?src=' + searchURL;
+                                    
+                    //sans le bandeau microsoft 
+                    this.source = 'https://view.officeapps.live.com/op/embed.aspx?src=' + searchURL;
 
-            }
-            //TODO : à des fins de test uniquement, à supprimer lorsque l'on pourra avoir accès aux fichiers sur le serveur
-            else if(this.fileType == "pdf")
-            {
-                searchURL = 'https://www.soundczech.cz/temp/lorem-ipsum.pdf';
-                this.source = searchURL;
-            }
+                }
 
-            else if(this.fileType == "mp4")
-            {
-                searchURL = 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4';
-                this.source = searchURL;
+                else
+                {
+                    this.source = searchURL;
+                }
             }
-
-            else if(this.fileType == "png")
-            {
-                searchURL = 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Google_Images_2015_logo.svg/640px-Google_Images_2015_logo.svg.png';
-                this.source = searchURL;
-            }
-
-            
-            //indiquer au template que le fichier a bien été chargé
+            //indiquer au template que le fichier a bien été chargé, possiblement à supprimer?
             this.resultLoaded = true;
             this.calculatingResponse = false;
 
-        }
+        }*/
 
         /**
          * Méthode pour utiliser FontAwesome (icônes des fichiers)
