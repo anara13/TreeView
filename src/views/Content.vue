@@ -3,15 +3,6 @@
         <h2 class="h2">Gestion de documents</h2>
 
         <div class="main-content">
-            <!--<audio v-if="pathExtension=='wav'" :src="pathItem" controls width="100%" height="auto" style="display:block; margin: 30vh auto" />
-            <video v-if="pathExtension=='avi' || pathExtension=='mp4' " :src="pathItem" controls width="100%" height="auto" /> 
-            <div v-if="pathExtension=='pdf' || pathExtension=='html' || pathExtension=='txt'" style="display:flex; justify-content:center;align-item:center;">
-                <iframe :src="source" style="width: 100%; height:100vh" />
-            </div>
-            <div v-if="pathExtension=='jpg' || pathExtension=='png' || pathExtension=='gif' || pathExtension=='bmp' || pathExtension=='ico'">
-                <img :src="pathItem" style="display:block; margin: 30vh auto" />
-            </div>-->
-
             <!-- Rendering the loaded file -->
             <div v-if="resultLoaded" id="file-preview" style="width:100%;height:800px;">
                 <audio v-if="pathExtension === 'avi' || fileType === 'wav'" :src="source" type="audio/wav" controls="controls"></audio>
@@ -29,7 +20,7 @@
             </div>
 
             <!-- Initial screen -->
-            <div v-show="source.length === 0 && isError === false">
+            <div v-show="source.length === 0 && isError === false && pathItem.length === 0">
                 <div style="font-size: 24px; text-align: center;">
                     <i class="far fa-file fa-10x" style="transform: rotate(-3deg);width:240px;height:240px; margin: 130px auto 20px auto; display: block; color: #ddd" viewBox="0 0 24 24"></i>
                 </div>
@@ -41,7 +32,7 @@
                 <div style="font-size: 24px; text-align: center;">
                     <i class="fas fa-exclamation-triangle fa-10x" style="transform: width:240px;height:240px; margin: 130px auto 20px auto; display: block; color: #ddd" viewBox="0 0 24 24"></i>
                 </div>
-                <h2 class="h2" style="text-align: center; color: #888;">Le fichier que vous avez sélectionné n'a pas été trouvé</h2>
+                <h2 class="h2" style="text-align: center; color: #888;">Le fichier sélectionné n'a pas été trouvé</h2>
             </div>
     </div>
 </div>
@@ -58,60 +49,133 @@
         resultLoaded = false;
         calculatingResponse = false;
         source = '';
-        fileType;
+        fileType = '';
         pathItem ="";
         pathExtension="";
         isError = false;
+        searchURL = '';
+
         mounted() {
             this.addFontAwesome();
-            //on récupère ici l'élément sélectionné depuis le treeView
+            //on récupère ici l'élément sélectionné depuis le TreeView
             this.$root.$on('item-left-clicked', itemPath => {
                 this.pathItem = itemPath.toString();
-                //this.pathExtension = itemPath.split('.').pop();
-                //this.$emit('clicked', 'true')
-                //this.source = "loading";
-                //this.fileType = "pdf";
+
+                var hasType = this.pathItem.split('.');
+
+                //Compatible avec la version statique de récupération d'url
+                //this.fetchAndReadFile(this.pathItem);
+
+                //Compatible nouveau système de récupération d'url avec fausse API
+                if(hasType.length > 1)
+                {
+                    this.selected = true;
+                    this.fetchFileUrl(this.pathItem);
+                }
+
+                else
+                {
+                    //on remet tous les paramètres à zéro puisqu'aucun noeud n'est sélectionné
+                    this.selected = false;
+                    this.isError = false;
+                    this.source = '';
+                    this.resultLoaded = false;
                 
-                // const action = 'read';
-                this.fetchAndReadFile(this.pathItem);
+                    this.searchURL = '';
+                }
             });                
 
             this.$root.$on('open-and-print-item', action => {
-                /*this.source = 'http://dictee.zenidoc.com:9000/cache/123456789.pdf';
-                this.fileType = "pdf";*/
                 this.fetchAndPrintFile();
             });
         }
 
         created() {
-            this.addFontAwesome();
+            this.addFontAwesome();           
         }
 
         fetchAndPrintFile() {
-            // TODO: "SecurityError: Permission denied to access property "print" on cross-origin object"
-            // Erreur à cause de Firefox (aussi sur IE apparemment)
-            // Check ici https://bugzilla.mozilla.org/show_bug.cgi?id=911444
-            // iframe.src = "./fake_files/lorem_ipsum.pdf";
-            // iframe.src = 'https://docs.google.com/gview?url='+'http://dictee.zenidoc.com:9000/cache/123456789.pdf';
-            let iframe = document.createElement('iframe');
-            document.body.appendChild(iframe);
-            // iframe.src = 'http://dictee.zenidoc.com:9000/cache/123456789.pdf';
-            iframe.style.visibility = 'hidden';
-            iframe.onload = function() {
-                console.log("file loaded");
-                setTimeout(function() {
-                    iframe.contentWindow.focus();
-                    iframe.contentWindow.print();
-                    //iframe.contentWindow.document.getElementById('print').click();
-                }, 3000);
-            };
+
+            window.frames["printf"].focus();
+            window.frames["printf"].contentWindow.print();
+
+        }
+
+        /**
+         * Récupère l'url du fichier sélectionné
+         */
+        fetchFileUrl(itemPath){
+
+            this.isError = false;
+            this.calculatingResponse = true;
+            this.pathExtension = itemPath.split('.').shift();
+            this.fileType = itemPath.split('.').pop();
+            this.source = '';
+            this.resultLoaded = false;
+                
+            this.searchURL = '';
+
+            axios
+                .get('http://localhost:3000/url?name=' + itemPath) 
+                    .then(response => {
+                        
+                        //l'addresse du lien dans le fichier json
+                        this.searchURL = response.data[0].path;
+                        this.readFile(this.searchURL);
+
+                    })
+                    .catch(error => {
+                        console.log('Il y a eu une erreur', error.response)
+                        this.isError = true;
+                        this.calculatingResponse = false;
+
+                    })
+        }
+
+        /**
+         * Affiche le fichier sélectionné 
+         */
+        readFile(pathFile){
+
+            //le lien vers le fichier
+                
+            //si c'est un document pouvant être visualisé par microsoft office, alors il a un lien spécial
+            if(this.fileType == "docx" || this.fileType == "doc" || this.fileType == "docm" || this.fileType == "dotm" || this.fileType == "dotx" || this.fileType == "xlsx" || this.fileType == "xlsb" || this.fileType == "xls" || this.fileType == "xlsm" || this.fileType == "pptx" || this.fileType == "ppsx" || this.fileType == "ppt" || this.fileType == "pps" || this.fileType == "pptm" || this.fileType == "potm" || this.fileType == "ppam" || this.fileType == "potx" || this.fileType == "ppsm")
+            {
+                //TODO: choisir le visuel souhaité                
+                //avec le bandeau microsoft 
+                //this.source = 'https://view.officeapps.live.com/op/view.aspx?src=' + this.searchURL;
+                                
+                //sans le bandeau microsoft 
+                this.source = 'https://view.officeapps.live.com/op/embed.aspx?src=' + pathFile;
+
+            }
+
+            else
+            {
+                this.source = pathFile;
+            }
+            
+            //indiquer au template que le fichier a bien été chargé, possiblement à supprimer?
+            this.resultLoaded = true;
+            this.calculatingResponse = false;
+
+        }
+
+        /**
+         * Méthode pour utiliser FontAwesome 
+         */
+        addFontAwesome() {
+            let head = window.document.querySelector('head');
+            let linkFontAwesome = '<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">';
+            head.innerHTML += linkFontAwesome;
         }
 
         /**
          * Récupère et affiche le fichier sélectionné 
          */
         //avec récupération d'url statique
-        fetchAndReadFile(itemPath){
+        /*fetchAndReadFile(itemPath){
 
             this.isError = false;
             this.calculatingResponse = true;
@@ -133,6 +197,7 @@
                 //ou en fonction du rendu visuel que l'on souhaite avoir
                 //sans le bandeau Microsoft
                 this.source = 'https://view.officeapps.live.com/op/embed.aspx?src=' + searchURL;
+                this.resultLoaded = true;
 
             }
 
@@ -170,7 +235,7 @@
             //indiquer au template que le fichier a bien été chargé
             this.calculatingResponse = false;
 
-        }
+        }*/
         
         /**
          * Récupère et affiche le fichier sélectionné 
@@ -222,20 +287,11 @@
                     this.source = searchURL;
                 }
             }
-            //indiquer au template que le fichier a bien été chargé, possiblement à supprimer?
+
             this.resultLoaded = true;
             this.calculatingResponse = false;
 
         }*/
-
-        /**
-         * Méthode pour utiliser FontAwesome (icônes des fichiers)
-         */
-        addFontAwesome() {
-            let head = window.document.querySelector('head');
-            let linkFontAwesome = '<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">';
-            head.innerHTML += linkFontAwesome;
-        }
 
     }
 </script>

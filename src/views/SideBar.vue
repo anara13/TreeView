@@ -176,7 +176,7 @@ export default class SideBar extends Vue {
 
     mounted(){
         
-        this.$root.$on('item-right-clicked', (DOMElementRightClicked) => {this.displayContextMenu(DOMElementRightClicked, event);});
+        this.$root.$on('item-right-clicked', (DOMElementRightClicked, itemName) => {this.displayContextMenu(DOMElementRightClicked, event, itemName);});
     }
 
      /**
@@ -257,6 +257,8 @@ export default class SideBar extends Vue {
         })
 
     }
+
+    
 }
 </script>
 

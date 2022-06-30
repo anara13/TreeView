@@ -101,7 +101,8 @@ export default class TreeView extends Vue {
   rightClick($event, item) {
       let DOMElementRightClicked = $event.target;
       $event.preventDefault();
-      this.$root.$emit('item-right-clicked', DOMElementRightClicked);
+      let itemName = item.name;
+      this.$root.$emit('item-right-clicked', DOMElementRightClicked, itemName);
       // this.$emit('item-right-clicked', event);
   }
 

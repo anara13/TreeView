@@ -1,16 +1,16 @@
 {
   "items": [
   {
-    "name": ".git"
+    "name": "dossier_1"
   },
   {
-    "name": "node_modules"
+    "name": "dossier_2"
   },
   {
-    "name": "public",
+    "name": "dossier_3",
     "children": [
       {
-        "name": "static",
+        "name": "sous dossier_1",
         "children": [
           {
             "name": "logo.png",
@@ -43,10 +43,25 @@
   {
     "name": "word.docx",
     "file": "docx"
+  }
+],
+
+"url":[
+  {
+    "name": "lorem-ipsum.pdf",
+    "path": "https://www.soundczech.cz/temp/lorem-ipsum.pdf"
   },
   {
-    "name": "yarn.lock",
-    "file": "txt"
+    "name":"sample_video.mp4",
+    "path": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4"
+  },
+  {
+    "name": "word.docx",
+    "path": "https://github.com/poychang/blog.poychang.net/raw/master/assets/post-files/THIS-IS-WORD.docx"
+  },
+  {
+    "name": "google_image.png",
+    "path": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Google_Images_2015_logo.svg/640px-Google_Images_2015_logo.svg.png"
   }
 ]
 }
