@@ -1,113 +1,7 @@
 <template>
     <div class="nav" style="display:flex;margin-top:1px;">
 
-      <!--<Modal v-show="isModalVisible" @close="closeModal">
-        <template v-slot:header>
-          <h1>Edition des types d'arborescence </h1>
-          <span @click="openConfirmBox(0)" style="cursor:pointer;"><i class="fas fa-times-circle"></i></span>
-        </template>
-
-        <template v-slot:body>
-          <div v-if="alertMessage != ''" class="modal-alert alert-box success">{{alertMessage}}</div>
-
-          <div v-if="isConfirmBoxVisible" class="modal-box confirm-box">
-            <div class="message">{{ confirmMessage }}</div>
-
-            <div class="action-btn">
-              <button @click="isConfirmBoxVisible = false" class="btn cancel-btn">Annuler</button>
-              <button @click="actionConfirmBox(confirmResult)" class="btn confirm-btn">Confirmer</button>
-            </div>
-          </div>
-
-          <nav class="modal-nav">
-            <div class="modal-nav_item">
-              <label for="arboName">Nom :</label>
-              <select id="arboName" name="arboName" @change="selectedArbo($event)">
-                <option value="default"></option>
-                <option v-for="(list, index) in Store.Applications.GED.data.listArbo" :key="index" :value="list.title" :id="index">{{list.title}}</option>
-              </select>
-            </div>
-            <div class="modal-nav_btn" id="createButton" @click="createArbo(0)">Nouveau</div>
-            <div class="modal-nav_btn" id="duplicateButton" style="opacity:0.5;" @click="createArbo(1)">Dupliquer</div>
-            <div class="modal-nav_btn" id="deleteButton" style="opacity:0.5;" @click="openConfirmBox(1)">Supprimer</div>
-          </nav>
-
-          <section id="modal-content">
-
-            <div class="modal-content_column modal-content_levelDepth" style="width:24%;">
-              <div class="level-arbo">
-                <h3>Nom: </h3>
-                <span v-if="arborescence != null" @dblclick="editName" id="currentArboName">{{arborescence.title}}</span>                
-              </div>
-              <div class="level-arbo droptarget" data-prop=0 @dragover="dragOver($event)" @dragenter="dragEnter($event)" @dragleave="dragLeave($event)" @drop="dragDrop($event)">
-                <h3>1er niveau : </h3>
-                <span v-if="arborescence != null">{{arborescence.levels[0]}}</span>                
-              </div>
-              <div class="level-arbo droptarget" data-prop=1 @dragover="dragOver($event)" @dragenter="dragEnter($event)" @dragleave="dragLeave($event)" @drop="dragDrop($event)">
-                <h3>2eme niveau : </h3>
-                <span v-if="arborescence != null">{{arborescence.levels[1]}}</span>                
-              </div>
-              <div class="level-arbo droptarget" data-prop=2 @dragover="dragOver($event)" @dragenter="dragEnter($event)" @dragleave="dragLeave($event)" @drop="dragDrop($event)">
-                <h3>3eme niveau : </h3>
-                <span v-if="arborescence != null">{{arborescence.levels[2]}}</span>                
-              </div>
-              <div class="level-arbo droptarget" data-prop=3 @dragover="dragOver($event)" @dragenter="dragEnter($event)" @dragleave="dragLeave($event)" @drop="dragDrop($event)">
-                <h3>4eme niveau : </h3>
-                <span v-if="arborescence != null">{{arborescence.levels[3]}}</span>                
-              </div>
-              <div class="level-arbo droptarget" data-prop=4 @dragover="dragOver($event)" @dragenter="dragEnter($event)" @dragleave="dragLeave($event)" @drop="dragDrop($event)">
-                <h3>5eme niveau : </h3>
-                <span v-if="arborescence != null">{{arborescence.levels[4]}}</span>
-              </div>
-              <div class="level-arbo droptarget" data-prop="path" @dragover="dragOver($event)" @dragenter="dragEnter($event)" @dragleave="dragLeave($event)" @drop="dragDrop($event)">
-                <h3>Désignation fichiers: </h3>
-                <span v-if="arborescence != null">{{arborescence.path}}</span>
-              </div>
-            </div>
-
-            <div class="modal-content_column" style="width:38%;display:flex;flex-direction:column;justify-content:space-around;">
-              <h3>Informations disponibles</h3>
-              <div id="availableInformation" style="overflow:auto;text-align:left;padding-left:5px;opacity:0.5">
-                <div v-for="(property, index) in Store.Applications.GED.data.treeProperties" :key="index" class="arbo-property" draggable="false" @dragstart="dragStart($event)" @dragend="dragEnd($event)">{{ property }}</div>
-              </div>
-            </div>
-
-            <div class="modal-content_column" style="width:38%;display:flex;flex-direction:column;justify-content:space-around;">
-              <h3>Aperçu de l'arborescence</h3>
-              <div id="overviewArbo">
-                <ul v-if="arborescence != null" style="text-align:left;padding-left:5px;">
-                  <li>&#9654; {{arborescence.levels[0]}}</li>
-                    <ul v-if="arborescence.levels[1] != ''" style="text-align:left;padding-left:5px;">
-                      <li>&#9654; {{arborescence.levels[1]}}</li>
-                      <ul v-if="arborescence.levels[2] != ''" style="text-align:left;padding-left:5px;">
-                        <li>&#9654; {{arborescence.levels[2]}}</li>
-                          <ul v-if="arborescence.levels[3] != ''" style="text-align:left;padding-left:5px;">
-                            <li>&#9654; {{arborescence.levels[3]}}</li>
-                              <ul v-if="arborescence.levels[4] != ''" style="text-align:left;padding-left:5px;">
-                                <li>&#9654; {{arborescence.levels[4]}}</li>
-                                <ul><li>{{arborescence.path}}</li></ul>
-                              </ul>
-                              <ul v-else><li>{{arborescence.path}}</li></ul>
-                          </ul>
-                          <ul v-else><li>{{arborescence.path}}</li></ul>
-                      </ul>
-                      <ul v-else> <li>{{arborescence.path}}</li></ul>
-                    </ul>
-                    <ul v-else><li>{{arborescence.path}}</li></ul>
-                </ul>
-              </div>
-            </div>
-          </section>          
-        </template>
-        
-        <template v-slot:footer>
-          <div @click="openConfirmBox(0)" style="cursor:pointer;border:1px solid transparent;padding:10px;width:70px;text-align:center;border-radius:5px;color:#383ea5;margin-right:5px;">ANNULER</div>
-          <div @click="clearData" style="cursor:pointer;border:1px solid transparent;padding:10px;width:70px;text-align:center;margin-right:5px;border-radius:5px;background:#383ea5;color:#fff;">VALIDER</div>
-
-        </template>
-      </Modal>-->
-
-        <context-menu ref="menu" id="context-menu">
+      <context-menu ref="menu" id="context-menu">
         <ul class="options">          
           <li @click="printFile()" id="print-file"><i class="fas fa-print" style="margin-right:5px;color:black"></i> Imprimer le fichier</li>
           <li @click="tagItem()" id="tag-event"><i class="fas fa-check" style="margin-right:5px;color:green"></i> Marquer le fichier</li>
@@ -116,20 +10,9 @@
           <li id="delete-file"><i class="fas fa-trash" style="margin-right:5px;color:black"></i> Supprimer le fichier</li>
         </ul>
       </context-menu>
-      <!--<div style="width:90%;">
-        <button @click="showModal" class="btn open-modal" type="button" style="margin-top:5px;">Editer types d'arborescence</button>
 
-        <div class="type-arbo-menu">
-          <label for="arboTitle" style="margin-left:3px;">Sélectionner un type d'arborescence :</label>
-          <select id="arboTitle" name="arboTitle" style="width:100%;" @change="selectTypeArbo($event)">
-            <option v-if="typeArbo.length > 0" value="default">- {{ typeArbo }}</option>
-            <option v-for="(list, index) in Store.Applications.GED.data.listArbo" :key="index" :value="list.title" :id="index">{{list.title}}</option>
-          </select>
-        </div>-->   
-
-        <TreeView v-if="dataLoaded" :items='tree' />
-        <div v-else>Chargement ...</div>
-      <!--</div>-->
+      <TreeView v-if="dataLoaded" :items='tree' />
+      <div v-else>Chargement ...</div>
 
       <div class="resizer"></div>
 
@@ -149,114 +32,114 @@ import ContextMenu from 'vue-lil-context-menu';
     })
 
 export default class SideBar extends Vue { 
-        dataLoaded = false;   
-        isModalVisible = false;   
+  dataLoaded = false;   
+  isModalVisible = false;   
 
-//ici, permet de récupérer les données depuis un serveur
-    created() {
-      axios
-        .get('http://localhost:3000/items') 
-        .then(response => {
+  //ici, permet de récupérer les données depuis un serveur
+  created() {
+    axios
+      .get('http://localhost:3000/items') 
+      .then(response => {
 
-          //console.log(response.data)
-          this.tree = response.data 
-          this.dataLoaded =  true;
+        //console.log(response.data)
+        this.tree = response.data 
+        this.dataLoaded =  true;
 
-        })
-        .catch(error => {
-          console.log('Il y a eu une erreur', error.response)
-        })
-    }
+      })
+      .catch(error => {
+        console.log('Il y a eu une erreur', error.response)
+      })
+  }
 
-    data() {
-        return {
-            tree: []
-        }
-    }
+  data() {
+      return {
+          tree: []
+      }
+  }
 
-    mounted(){
-        
-        this.$root.$on('item-right-clicked', (DOMElementRightClicked, itemName) => {this.displayContextMenu(DOMElementRightClicked, event, itemName);});
-    }
-
-     /**
-     * Affiche le menu pour marquer les items selon l'emplacement du curseur
-     * Initialise la méthode closeMenu()
-     */
-    displayContextMenu(DOMElementRightClicked) {
-        this.itemTagged = DOMElementRightClicked;
-        const menu = window.document.getElementById('context-menu');
-        const tagEl = window.document.getElementById("tag-event");
-        const untagEl = window.document.getElementById("untag-event");
-        const printEl = window.document.getElementById("print-file");
-
-        // Utilisé pour désactiver l'action "imprimer" du menu contextuel selon le type de document (ex. sur les fichiers vidéos et audio)
-        /*let fileType = event.target.innerText.split('.').pop();
-        switch (fileType) {
-        case 'bmp':
-        case 'pdf':
-        case 'png': 
-            printEl.classList.remove("disabled");
-            break;
-        default:
-            printEl.classList.add("disabled");
-        }*/
-
-        if (this.itemTagged.classList.contains('tagged')) {
-        tagEl.classList.add("disabled");
-        untagEl.classList.remove("disabled");
-        } else {
-        untagEl.classList.add("disabled");
-        tagEl.classList.remove("disabled");
-        }
-
-        // #1 positionner le menu à côté du curseur
-        const left = event.pageX + 10;
-        const top = event.pageY - 40;
-        menu.style.left = left + "px";
-        menu.style.top = top + "px";
-
-        menu.style.display = "block";
-
-        this.closeMenu();
-    }
-
-    printFile() {
-        const action = 'print';
-        this.$root.$emit('open-and-print-item', action);
-        //window.print();
-    }
+  mounted(){
+      
+      this.$root.$on('item-right-clicked', (DOMElementRightClicked, itemName) => {this.displayContextMenu(DOMElementRightClicked, event, itemName);});
+  }
 
     /**
-     * Ajoute un fond rouge sur l'item sélectionné
-     */
-    tagItem() {
-        this.itemTagged.style.backgroundColor = "#DC143C";
-        this.itemTagged.style.borderRadius = "5px";
-        this.itemTagged.classList.add("tagged");
+   * Affiche le menu pour marquer les items selon l'emplacement du curseur
+   * Initialise la méthode closeMenu()
+   */
+  displayContextMenu(DOMElementRightClicked) {
+      this.itemTagged = DOMElementRightClicked;
+      const menu = window.document.getElementById('context-menu');
+      const tagEl = window.document.getElementById("tag-event");
+      const untagEl = window.document.getElementById("untag-event");
+      const printEl = window.document.getElementById("print-file");
 
-    }
+      // Utilisé pour désactiver l'action "imprimer" du menu contextuel selon le type de document (ex. sur les fichiers vidéos et audio)
+      /*let fileType = event.target.innerText.split('.').pop();
+      switch (fileType) {
+      case 'bmp':
+      case 'pdf':
+      case 'png': 
+          printEl.classList.remove("disabled");
+          break;
+      default:
+          printEl.classList.add("disabled");
+      }*/
 
-    /**
-     * Enlève le fond rouge sur l'item sélectionné
-     */
-    untagItem() {
-        this.itemTagged.style.backgroundColor = "transparent";
-        this.itemTagged.classList.remove("tagged");
+      if (this.itemTagged.classList.contains('tagged')) {
+      tagEl.classList.add("disabled");
+      untagEl.classList.remove("disabled");
+      } else {
+      untagEl.classList.add("disabled");
+      tagEl.classList.remove("disabled");
+      }
 
-    }
+      // #1 positionner le menu à côté du curseur
+      const left = event.pageX + 10;
+      const top = event.pageY - 40;
+      menu.style.left = left + "px";
+      menu.style.top = top + "px";
 
-    /**
-     * Ferme le menu lorsqu'un click est détecté sur la fenêtre 
-     */
-    closeMenu() {
-        document.addEventListener("click", function() {
-        let menu = window.document.getElementById('context-menu');
-        menu.style.display = "none";
+      menu.style.display = "block";
 
-        })
+      this.closeMenu();
+  }
 
-    }
+  printFile() {
+      const action = 'print';
+      this.$root.$emit('open-and-print-item', action);
+      //window.print();
+  }
+
+  /**
+   * Ajoute un fond rouge sur l'item sélectionné
+   */
+  tagItem() {
+      this.itemTagged.style.backgroundColor = "#DC143C";
+      this.itemTagged.style.borderRadius = "5px";
+      this.itemTagged.classList.add("tagged");
+
+  }
+
+  /**
+   * Enlève le fond rouge sur l'item sélectionné
+   */
+  untagItem() {
+      this.itemTagged.style.backgroundColor = "transparent";
+      this.itemTagged.classList.remove("tagged");
+
+  }
+
+  /**
+   * Ferme le menu lorsqu'un click est détecté sur la fenêtre 
+   */
+  closeMenu() {
+      document.addEventListener("click", function() {
+      let menu = window.document.getElementById('context-menu');
+      menu.style.display = "none";
+
+      })
+
+  }
 
     
 }

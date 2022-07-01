@@ -34,8 +34,8 @@
                 </div>
                 <h2 class="h2" style="text-align: center; color: #888;">Le fichier sélectionné n'a pas été trouvé</h2>
             </div>
+        </div>
     </div>
-</div>
 </template>
 
 <script>
@@ -60,7 +60,7 @@
             //on récupère ici l'élément sélectionné depuis le TreeView
             this.$root.$on('item-left-clicked', itemPath => {
                 this.pathItem = itemPath.toString();
-
+                console.log(this.pathItem)
                 var hasType = this.pathItem.split('.');
 
                 //Compatible avec la version statique de récupération d'url
@@ -76,7 +76,6 @@
                 else
                 {
                     //on remet tous les paramètres à zéro puisqu'aucun noeud n'est sélectionné
-                    this.selected = false;
                     this.isError = false;
                     this.source = '';
                     this.resultLoaded = false;
@@ -102,7 +101,7 @@
         }
 
         /**
-         * Récupère l'url du fichier sélectionné
+         * Récupère l'url du fichier sélectionné depuis le serveur
          */
         fetchFileUrl(itemPath){
 
@@ -119,7 +118,7 @@
                 .get('http://localhost:3000/url?name=' + itemPath) 
                     .then(response => {
                         
-                        //l'addresse du lien dans le fichier json
+                        //l'adresse du lien dans le fichier json
                         this.searchURL = response.data[0].path;
                         this.readFile(this.searchURL);
 

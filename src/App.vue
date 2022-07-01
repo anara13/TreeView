@@ -7,7 +7,6 @@
           <v-btn><router-link to="/Header">Header</router-link></v-btn>
           <v-btn><router-link to="/Content">Content</router-link></v-btn>
       </v-app-bar>
-      <AppTemplateDefault/>
       <router-view></router-view>
     </v-main>
   </v-app>

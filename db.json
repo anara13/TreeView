@@ -1,67 +1,80 @@
 {
   "items": [
-  {
-    "name": "dossier_1"
-  },
-  {
-    "name": "dossier_2"
-  },
-  {
-    "name": "dossier_3",
-    "children": [
-      {
-        "name": "sous dossier_1",
-        "children": [
-          {
-            "name": "logo.png",
-            "file": "png"
-          }
-        ]
-      },
-      {
-        "name": "favicon.ico",
-        "file": "png"
-      },
-      {
-        "name": "index.html",
-        "file": "html"
-      }
-    ]
-  },
-  {
-    "name": "lorem-ipsum.pdf",
-    "file": "pdf"
-  },
-  {
-    "name": "sample_video.mp4",
-    "file": "mp4"
-  },
-  {
-    "name": "google_image.png",
-    "file": "png"
-  },
-  {
-    "name": "word.docx",
-    "file": "docx"
-  }
-],
+    {
+      "name": "dossier_1"
+    },
+    {
+      "name": "dossier_2",
+      "children": [
+        {
+          "name": "sous dossier_1",
+          "children": [
+            {
+              "name": "logo.png",
+              "file": "png"
+            }
+          ]
+        },
+        {
+          "name": "favicon.ico",
+          "file": "png"
+        },
+        {
+          "name": "index.html",
+          "file": "html"
+        }
+      ]
+    },
+    {
+      "name": "lorem-ipsum.pdf",
+      "file": "pdf"
+    },
+    {
+      "name": "sample_video.mp4",
+      "file": "mp4"
+    },
+    {
+      "name": "golden_gate.jpg",
+      "file": "jpg"
+    },
+    {
+      "name": "word.docx",
+      "file": "docx"
+    },
+    {
+      "name": "powerpoint.pptx",
+      "file": "pptx"
+    },
+    {
+      "name": "excel.xlsx",
+      "file": "xlsx"
+    }
+  ],
 
-"url":[
-  {
-    "name": "lorem-ipsum.pdf",
-    "path": "https://www.soundczech.cz/temp/lorem-ipsum.pdf"
-  },
-  {
-    "name":"sample_video.mp4",
-    "path": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4"
-  },
-  {
-    "name": "word.docx",
-    "path": "https://github.com/poychang/blog.poychang.net/raw/master/assets/post-files/THIS-IS-WORD.docx"
-  },
-  {
-    "name": "google_image.png",
-    "path": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Google_Images_2015_logo.svg/640px-Google_Images_2015_logo.svg.png"
-  }
-]
+  "url":[
+    {
+      "name": "lorem-ipsum.pdf",
+      "path": "https://github.com/anara13/fileTypeToTest/raw/master/lorem-ipsum.pdf"
+    },
+    {
+      "name":"sample_video.mp4",
+      "path": "https://github.com/anara13/fileTypeToTest/raw/master/ForBiggerFun.mp4"
+    },
+    {
+      "name": "word.docx",
+      "path": "https://github.com/anara13/fileTypeToTest/raw/master/THIS-IS-WORD.docx"
+    },
+    {
+      "name": "golden_gate.jpg",
+      "path": "https://f.hellowork.com/blogdumoderateur/2013/04/goldengate.jpg"
+    },
+    {
+      "name": "powerpoint.pptx",
+      "path": "https://github.com/anara13/fileTypeToTest/raw/master/Bienvenue%20dans%20PowerPoint.pptx"
+    },
+    {
+      "name": "excel.xlsx",
+      "path": "https://github.com/anara13/fileTypeToTest/raw/master/sheet.xlsx"
+    }
+  ]
 }

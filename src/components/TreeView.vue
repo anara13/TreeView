@@ -51,6 +51,7 @@ export default class TreeView extends Vue {
       md: 'mdi-language-markdown',
       pdf: 'mdi-file-pdf-box',
       png: 'mdi-file-image',
+      jpg: 'mdi-file-image',
       txt: 'mdi-file-document-outline',
       wav: 'mdi-filmstrip',
       mp4: 'mdi-filmstrip',
@@ -64,18 +65,18 @@ export default class TreeView extends Vue {
       xlsx: 'mdi-file-excel', 
       xlsb: 'mdi-file-excel', 
       xlsm: 'mdi-file-excel',
-      pptx: 'mdi-file-presentation-box', 
-      ppsx: 'mdi-file-presentation-box', 
-      ppt: 'mdi-file-presentation-box', 
-      pps: 'mdi-file-presentation-box', 
-      pptm: 'mdi-file-presentation-box', 
-      potm: 'mdi-file-presentation-box', 
-      ppam: 'mdi-file-presentation-box', 
-      potx: 'mdi-file-presentation-box', 
-      ppsm: 'mdi-file-presentation-box',
-      //TODO : implémenter une icône basique pour tous les autres fichiers qui ne sont pas des dossiers
-      //else: 'mdi-file-outline'
+      pptx: 'mdi-file-powerpoint', 
+      ppsx: 'mdi-file-powerpoint', 
+      ppt: 'mdi-file-powerpoint', 
+      pps: 'mdi-file-powerpoint', 
+      pptm: 'mdi-file-powerpoint', 
+      potm: 'mdi-file-powerpoint', 
+      ppam: 'mdi-file-powerpoint', 
+      potx: 'mdi-file-powerpoint', 
+      ppsm: 'mdi-file-powerpoint',
 
+      //TODO : implémenter une icône basique pour tous les autres fichiers qui ne sont pas des dossiers et dont file ne serait pas rempli
+      else: 'mdi-file-outline'//peut-être définir comme valeur par défaut 
       
     },
 
