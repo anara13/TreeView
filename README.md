@@ -1,4 +1,4 @@
-# test-tree-view
+# TreeView
 
 ## Project setup
 ```
@@ -20,8 +20,10 @@ npm run build
 npm run lint
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## Installer la fausse API REST
+```
+npm install -g json-server 
+```
 
 ## Lancer la fausse API REST
 ```
