@@ -93,6 +93,16 @@
             this.addFontAwesome();           
         }
 
+        
+        /**
+         * Méthode pour utiliser FontAwesome 
+         */
+        addFontAwesome() {
+            let head = window.document.querySelector('head');
+            let linkFontAwesome = '<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">';
+            head.innerHTML += linkFontAwesome;
+        }
+
         fetchAndPrintFile() {
 
             window.frames["printf"].focus();
@@ -159,15 +169,6 @@
             this.resultLoaded = true;
             this.calculatingResponse = false;
 
-        }
-
-        /**
-         * Méthode pour utiliser FontAwesome 
-         */
-        addFontAwesome() {
-            let head = window.document.querySelector('head');
-            let linkFontAwesome = '<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">';
-            head.innerHTML += linkFontAwesome;
         }
 
         /**
@@ -258,7 +259,8 @@
                 .catch((error) => {
                     this.source = '';
                     console.log('Fichier non trouvé' + error)
-                    isError = true;
+                    this.isError = true;
+                    this.calculatingResponse = false;
                 })
 
             setTimeout(()=> {
@@ -267,25 +269,24 @@
             }, 3000);
 
             //le lien vers le fichier
-            if(!isError)
+
+            //si c'est un document pouvant être visualisé par microsoft office, alors il a un lien spécial
+            if(this.fileType == "docx" || this.fileType == "doc" || this.fileType == "docm" || this.fileType == "dotm" || this.fileType == "dotx" || this.fileType == "xlsx" || this.fileType == "xlsb" || this.fileType == "xls" || this.fileType == "xlsm" || this.fileType == "pptx" || this.fileType == "ppsx" || this.fileType == "ppt" || this.fileType == "pps" || this.fileType == "pptm" || this.fileType == "potm" || this.fileType == "ppam" || this.fileType == "potx" || this.fileType == "ppsm")
             {
-                //si c'est un document pouvant être visualisé par microsoft office, alors il a un lien spécial
-                if(this.fileType == "docx" || this.fileType == "doc" || this.fileType == "docm" || this.fileType == "dotm" || this.fileType == "dotx" || this.fileType == "xlsx" || this.fileType == "xlsb" || this.fileType == "xls" || this.fileType == "xlsm" || this.fileType == "pptx" || this.fileType == "ppsx" || this.fileType == "ppt" || this.fileType == "pps" || this.fileType == "pptm" || this.fileType == "potm" || this.fileType == "ppam" || this.fileType == "potx" || this.fileType == "ppsm")
-                {
-                    //TODO: choisir le visuel souhaité                
-                    //avec le bandeau microsoft 
-                    //this.source = 'https://view.officeapps.live.com/op/view.aspx?src=' + searchURL;
-                                    
-                    //sans le bandeau microsoft 
-                    this.source = 'https://view.officeapps.live.com/op/embed.aspx?src=' + searchURL;
+                //TODO: choisir le visuel souhaité                
+                //avec le bandeau microsoft 
+                //this.source = 'https://view.officeapps.live.com/op/view.aspx?src=' + searchURL;
+                                
+                //sans le bandeau microsoft 
+                this.source = 'https://view.officeapps.live.com/op/embed.aspx?src=' + searchURL;
 
-                }
-
-                else
-                {
-                    this.source = searchURL;
-                }
             }
+
+            else
+            {
+                this.source = searchURL;
+            }
+        
 
             this.resultLoaded = true;
             this.calculatingResponse = false;

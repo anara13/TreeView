@@ -4,7 +4,6 @@ import AppTemplateDefault from '@/components/AppTemplateDefault.vue';
 import SideBar from './views/SideBar.vue';
 import Header from './views/Header.vue';
 import Content from './views/Content.vue';
-import Essai from '@/components/Essai.vue'
 
 
 Vue.use(Router);
@@ -44,12 +43,6 @@ export default new Router({
         path: '/Content',
         name: "ContentS",
         component : Content
-    },
-
-    {
-        path: '/Test',
-        name: "Test",
-        component : Essai
     },
 
 ],

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>Header à remplacer dans le projet</h1>
+        <!--<h1>Header à remplacer dans le projet</h1>-->
     </div>
 </template>
 
