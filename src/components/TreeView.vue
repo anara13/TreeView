@@ -107,5 +107,10 @@ export default class TreeView extends Vue {
       // this.$emit('item-right-clicked', event);
   }
 
+  /**
+   * Permet de déterminer s'il s'agit d'un clic long ou d'un clic court
+   * 
+   */
+
 }
 </script>

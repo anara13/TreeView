@@ -63,16 +63,20 @@
                 console.log(this.pathItem)
                 var hasType = this.pathItem.split('.');
 
+                //Sytème de récupération d'url du noeud sélectionné 
                 //Compatible avec la version statique de récupération d'url
                 //this.fetchAndReadFile(this.pathItem);
 
-                //Compatible nouveau système de récupération d'url avec fausse API
+                //Compatible nouveau système de récupération d'url avec appel vers fausse API
+                //Savoir si le noeud sélectionné est un noeud "dossier" a été sélectionné ou pas
+                //Si non, on exécute la fonction de récupération d'url
                 if(hasType.length > 1)
                 {
                     this.selected = true;
                     this.fetchFileUrl(this.pathItem);
                 }
 
+                //Si oui, pas la peine de l'exécuter
                 else
                 {
                     //on remet tous les paramètres à zéro puisqu'aucun noeud n'est sélectionné
@@ -103,6 +107,9 @@
             head.innerHTML += linkFontAwesome;
         }
 
+        /**
+         * Permet de récupérer et d'imprimer de le fichier en cours
+         */
         fetchAndPrintFile() {
 
             window.frames["printf"].focus();
