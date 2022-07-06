@@ -1,8 +1,0 @@
-.mp4
-http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4
-
-.pdf
-https://www.soundczech.cz/temp/lorem-ipsum.pdf
-
-.png
-https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Google_Images_2015_logo.svg/640px-Google_Images_2015_logo.svg.png
